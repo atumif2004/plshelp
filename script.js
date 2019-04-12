@@ -1,37 +1,84 @@
-    
-    
+     
+let money = +prompt("Ваш бюджет на месяц?", ''),
+    time = prompt('Введите дату в формате YYYY-MM-DD', '');
 
-
-
-    var money = parseInt(prompt("Ваш бюджет на месяц?"));
-    var time = prompt("Введите дату в формате YYYY-MM-DD");
-    
-    var stat = prompt("Введите обязательную статью расходов в этом месяце");
-    var price = parseInt(prompt("Во сколько обойдется?"));
-
-    var stat2 = prompt("Введите обязательную статью расходов в этом месяце");
-    var price2 = parseInt(prompt("Во сколько обойдется?"));
-
-   
+let appData = {
+    budget: money,
+    expenses: {},
+    optionalExpenses: {},
+    income: [],
+    timeData: time,
+    savings: false
+};
  
-    var expenses = {
-    stat : price,
-    stat2 : price2
-    }
- 
-     var AppData = {
-        budjet: money,
-        timeData: time,
-        expenses,
-        optionalExpenses:"",
-        income: " ",
-        savings:false
+/*
+let i = 0;
+do {
+    let a = prompt("Введите обязательную статью расходов в этом месяце", ''),
+        b = prompt("Во сколько обойдется?", '');
+
+        if(typeof(a) === 'string' && typeof(a) != null && typeof(b) != null
+        && a != '' && b != '') {
+            console.log('done');
+            appData.expenses[a] = b;  
+             
+            
+        } else {
+            alert("неверный формат данных!");
+            i--;
+            
+        }
+        i++;
         
+}while(i<2)
+*/
+
+/*
+let i = 0;
+while(i < 2) {
+    let a = prompt("Введите обязательную статью расходов в этом месяце", ''),
+        b = prompt("Во сколько обойдется?", '');
+
+        if(typeof(a) === 'string' && typeof(a) != null && typeof(b) != null
+        && a != '' && b != '') {
+            console.log('done');
+            appData.expenses[a] = b;  
+        } else {
+            alert("неверный формат данных!");
+            i--;
+        }
+        i++;
     }
+*/
 
- 
-    var budD=money-(price+price2);
- 
-    alert("Бюджет на один день= "+budD/30+ " руб");
+for(let i = 0;i < 2; i++) {
+    let a = prompt("Введите обязательную статью расходов в этом месяце", ''),
+        b = prompt("Во сколько обойдется?", '');
 
+        if(typeof(a) === 'string' && typeof(a) != null && typeof(b) != null
+        && a != '' && b != '') {
+            console.log('done');
+            appData.expenses[a] = b;  
+        } else {
+            alert("неверный формат данных!");
+            i--;
+        }
+       
+};
+
+
+
+appData.moneyPerDay= appData.budget/30;
+
+alert("Ежедневный бюджет: " + appData.moneyPerDay);
+
+if(appData.moneyPerDay < 100) {
+    console.log("Минимальный уровень достатка")
+} else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
+    console.log("Средний уровень достатка")
+} else if (appData.moneyPerDay > 200 && appData.moneyPerDay < 200) {
+    console.log("Высокий уровень достатка")
+} else {
+    console.log("Ошибка");
+}
  
